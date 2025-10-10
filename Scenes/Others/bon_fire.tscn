@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvasw60fuqvay"]
+
+[ext_resource type="Texture2D" uid="uid://bwd2nepvfu867" path="res://Assets/Sprites/World/Bonvicio_Bonfire_1-0/Bonfire_1.png" id="1_aq45g"]
+[ext_resource type="Texture2D" uid="uid://dbdp1i4rikxit" path="res://Assets/Sprites/World/Bonvicio_Bonfire_1-0/Bonfire_2.png" id="2_y6164"]
+[ext_resource type="Texture2D" uid="uid://d3s1ei0iqagkf" path="res://Assets/Sprites/World/Bonvicio_Bonfire_1-0/Bonfire_3.png" id="3_lrmqn"]
+[ext_resource type="Texture2D" uid="uid://csgaqh7p3y6lw" path="res://Assets/Sprites/World/Bonvicio_Bonfire_1-0/Bonfire_4.png" id="4_ad5ji"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ddhw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aq45g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y6164")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lrmqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ad5ji")
+}],
+"loop": true,
+"name": &"lit-default",
+"speed": 7.0
+}]
+
+[node name="BonFire" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8ddhw")
+animation = &"lit-default"
+autoplay = "lit-default"
+frame_progress = 0.68511593
