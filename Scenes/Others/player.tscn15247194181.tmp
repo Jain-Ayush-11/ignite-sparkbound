@@ -24,7 +24,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("1_f6uxt")
 }],
-"loop": false,
+"loop": true,
 "name": &"circle",
 "speed": 5.0
 }, {
@@ -38,15 +38,15 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bwhuv")
 }],
-"loop": false,
+"loop": true,
 "name": &"circle_to_square",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_f1rsi")
 }],
-"loop": false,
+"loop": true,
 "name": &"square",
 "speed": 5.0
 }]
@@ -57,7 +57,7 @@ script = ExtResource("1_34lgi")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.55, 0.55)
 sprite_frames = SubResource("SpriteFrames_evlwd")
-animation = &"circle_to_square"
+animation = &"square"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = ExtResource("2_34lgi")
