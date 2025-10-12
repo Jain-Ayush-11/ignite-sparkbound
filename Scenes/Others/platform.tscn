@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://bwd8g7siflg8p" path="res://Assets/Sprites/World/platforms.png" id="1_7lxka"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lxka"]
-size = Vector2(28, 8)
+size = Vector2(28, 9)
 
-[node name="AnimatableBody2D" type="AnimatableBody2D"]
+[node name="Platform" type="AnimatableBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7lxka")

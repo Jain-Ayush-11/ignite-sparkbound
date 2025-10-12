@@ -1,10 +1,5 @@
 extends CharacterBody2D
 
-enum SHAPE {CIRCLE, SQUARE, TRIANGLE}
-
-var current_shape = null
-var next_shape = null
-
 class PlayerShape:
 	var weight: int
 	var speed: int
@@ -15,6 +10,10 @@ class PlayerShape:
 		self.speed = speed
 		self.jump_velocity = jump_velocity
 
+enum SHAPE {CIRCLE, SQUARE, TRIANGLE}
+
+var current_shape = null
+var next_shape = null
 
 var circle = PlayerShape.new(50, 250, -350)
 var square = PlayerShape.new(100, 50, -100)
@@ -25,6 +24,8 @@ var shape_properties = {
 	SHAPE.SQUARE: square,
 	SHAPE.TRIANGLE: triangle
 }
+
+@export var _heat: float
 
 #@onready var direction_sprite: Sprite2D = $DirectionSprite
 @onready var player_animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -91,3 +92,10 @@ func move_player(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, player_attributes.speed)
 
 	move_and_slide()
+
+func use_heat(used_heat: float) -> float:
+	_heat -= used_heat
+	return _heat
+
+func heat() -> float:
+	return _heat
