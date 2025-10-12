@@ -37,7 +37,7 @@ var can_wall_jump: bool = false
 var is_wall_jumping: bool = false
 var wall_jump_timer_start: float
 var wall_jump_collider_direction: int
-var wall_direction: float
+#var wall_direction: float
 
 #@onready var direction_sprite: Sprite2D = $DirectionSprite
 @onready var player_animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -101,8 +101,6 @@ func move_player(delta: float) -> void:
 	if direction\
 	 #and not (is_on_wall() and direction == wall_direction)\
 	:
-		if is_on_wall() and direction == wall_direction:
-			velocity.x = move_toward(velocity.x, 0, player_attributes.speed)
 		velocity.x = direction * player_attributes.speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, player_attributes.speed)
@@ -126,13 +124,11 @@ func wall_jump() -> void:
 		var collider_collision_layer: int = collided_body.tile_set.get_physics_layer_collision_layer(0)
 		var is_wall_jumpable: bool = collider_collision_layer & (1<<(JUMP_WALL_LAYER-1))
 		#wall_jump_timer = collided_body.get_node("WallJumpTimer")
-		print(collision.get_position().x, " ", position.x)
 		if collision.get_position().x < position.x:
 			is_collider_left = true
 		
 		if is_wall_jumpable:
 			wall_jump_timer_start = Time.get_unix_time_from_system()
-			#wall_jump_timer.start()
 			can_wall_jump = true
 
 	if can_wall_jump and Time.get_unix_time_from_system() - wall_jump_timer_start >= 1 or is_on_floor():
@@ -143,8 +139,7 @@ func wall_jump() -> void:
 			can_wall_jump = false
 			velocity.y = WALL_JUMP_VELOCITY
 			var pushback_direction: int = 1 if is_collider_left else -1
-			wall_direction = -1*pushback_direction
-			#print(dir)
+			#wall_direction = -1*pushback_direction
 			velocity.x = pushback_direction * WALL_JUMP_KNOCKBACK
 		else:
 			can_wall_jump = false
