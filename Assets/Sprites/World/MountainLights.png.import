@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bba4kbjmgslud"
-path="res://.godot/imported/Circle-player.png-e4e28a3130dfd1e7cb2f7aaecc3fbc95.ctex"
+uid="uid://bdalu6hww08j8"
+path="res://.godot/imported/MountainLights.png-12d29256cb75e07187b72afefd86df2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Player/Circle-player.png"
-dest_files=["res://.godot/imported/Circle-player.png-e4e28a3130dfd1e7cb2f7aaecc3fbc95.ctex"]
+source_file="res://Assets/Sprites/World/MountainLights.png"
+dest_files=["res://.godot/imported/MountainLights.png-12d29256cb75e07187b72afefd86df2f.ctex"]
 
 [params]
 

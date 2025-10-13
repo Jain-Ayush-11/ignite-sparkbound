@@ -120,16 +120,17 @@ func wall_jump() -> void:
 
 	if is_on_wall():
 		var collision = get_slide_collision(0)
-		var collided_body: TileMapLayer = collision.get_collider()
-		var collider_collision_layer: int = collided_body.tile_set.get_physics_layer_collision_layer(0)
-		var is_wall_jumpable: bool = collider_collision_layer & (1<<(JUMP_WALL_LAYER-1))
-		#wall_jump_timer = collided_body.get_node("WallJumpTimer")
-		if collision.get_position().x < position.x:
-			is_collider_left = true
+		var collided_body = collision.get_collider()
+		if collided_body is TileMapLayer:
+			var collider_collision_layer: int = collided_body.tile_set.get_physics_layer_collision_layer(0)
+			var is_wall_jumpable: bool = collider_collision_layer & (1<<(JUMP_WALL_LAYER-1))
+			#wall_jump_timer = collided_body.get_node("WallJumpTimer")
+			if collision.get_position().x < position.x:
+				is_collider_left = true
 		
-		if is_wall_jumpable:
-			wall_jump_timer_start = Time.get_unix_time_from_system()
-			can_wall_jump = true
+			if is_wall_jumpable:
+				wall_jump_timer_start = Time.get_unix_time_from_system()
+				can_wall_jump = true
 
 	if can_wall_jump and Time.get_unix_time_from_system() - wall_jump_timer_start >= 1 or is_on_floor():
 		can_wall_jump = false

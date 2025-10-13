@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://mak727yxj3r4"]
 
 [ext_resource type="Script" uid="uid://dosk4dwuf06g8" path="res://Scripts/player.gd" id="1_34lgi"]
-[ext_resource type="Texture2D" uid="uid://d0d5hvk1simwu" path="res://Assets/Sprites/Player/Circle-player.png" id="1_f6uxt"]
+[ext_resource type="Texture2D" uid="uid://bba4kbjmgslud" path="res://Assets/Sprites/Player/Circle-player.png" id="1_f6uxt"]
 [ext_resource type="Shape2D" uid="uid://4iqtd8lw2hrr" path="res://Shapes/Player/circle_shape.tres" id="2_34lgi"]
 [ext_resource type="Texture2D" uid="uid://b7m3dalo5yjr2" path="res://Assets/Sprites/Player/PlayerSquareSpriteSheet.png" id="3_beapg"]
 [ext_resource type="Texture2D" uid="uid://bxf6sqi3fgjr6" path="res://Assets/Sprites/Player/PlayerSquare.png" id="4_f1rsi"]
@@ -58,7 +58,7 @@ _heat = 100.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.55, 0.55)
 sprite_frames = SubResource("SpriteFrames_evlwd")
-animation = &"circle_to_square"
+animation = &"circle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = ExtResource("2_34lgi")

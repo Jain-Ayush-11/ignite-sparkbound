@@ -1,4 +1,4 @@
-extends Area2D
+class_name ButtonPlate extends Area2D
 
 
 @onready var sprite: Sprite2D = $Sprite2D
