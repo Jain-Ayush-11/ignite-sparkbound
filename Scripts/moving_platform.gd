@@ -18,9 +18,9 @@ func move_platform() -> void:
 	if bring_back_button_left.is_pressed and platform_animation_player.current_animation_position > 0:
 		if platform_animation_player.current_animation_position == platform_animation_player.current_animation_length:
 			platform_animation_player.seek(platform_animation_player.current_animation_length - 0.001)
-		heat_move_platform.move_platform(platform_animation_player, heat_move_platform.PLATFORM_DIRECTION.LEFT)
+		heat_move_platform.move_platform(platform_animation_player, heat_move_platform.PLATFORM_DIRECTION.LEFT, 2.5)
 	elif bring_back_button_right.is_pressed and platform_animation_player.current_animation_position < platform_animation_player.current_animation_length:
 		if platform_animation_player.current_animation_position == 0:
 			platform_animation_player.seek(0.001)
-		heat_move_platform.move_platform(platform_animation_player, heat_move_platform.PLATFORM_DIRECTION.RIGHT)
+		heat_move_platform.move_platform(platform_animation_player, heat_move_platform.PLATFORM_DIRECTION.RIGHT, 2.5)
 		

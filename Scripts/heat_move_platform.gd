@@ -56,15 +56,15 @@ func check_platform_movement(is_movement_key_pressed: bool) -> void:
 	move_platform(animation_player, platform_movement_direction)
 
 
-func move_platform(animation_player_platform: AnimationPlayer, platform_movement_dir: PLATFORM_DIRECTION) -> void:
+func move_platform(animation_player_platform: AnimationPlayer, platform_movement_dir: PLATFORM_DIRECTION, speed_scale: float = 1.0) -> void:
 	var move_and_update_platform: bool = false
 
 	match platform_movement_dir:
 		PLATFORM_DIRECTION.RIGHT:
-			animation_player_platform.speed_scale = 1
+			animation_player_platform.speed_scale = speed_scale
 			move_and_update_platform = true
 		PLATFORM_DIRECTION.LEFT:
-			animation_player_platform.speed_scale = -1
+			animation_player_platform.speed_scale = -speed_scale
 			move_and_update_platform = true
 		PLATFORM_DIRECTION.NONE:
 			animation_player_platform.pause()
