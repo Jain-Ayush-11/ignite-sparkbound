@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fc5s2scmfrt7"
-path="res://.godot/imported/Mountain.png-1b1bded407e889a649d0c0f33771821b.ctex"
+uid="uid://dilq2hjfyxtpw"
+path="res://.godot/imported/HealthBarWhite.png-5f9e5845c5bf0a75641e7b0caeeb5212.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/World/Mountain.png"
-dest_files=["res://.godot/imported/Mountain.png-1b1bded407e889a649d0c0f33771821b.ctex"]
+source_file="res://Assets/Sprites/Player/HeatBar/HealthBarWhite.png"
+dest_files=["res://.godot/imported/HealthBarWhite.png-5f9e5845c5bf0a75641e7b0caeeb5212.ctex"]
 
 [params]
 

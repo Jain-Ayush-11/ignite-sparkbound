@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://boibfcp6guytv"]
+[gd_scene load_steps=6 format=3 uid="uid://boibfcp6guytv"]
 
 [ext_resource type="Script" uid="uid://bsy1xtvaqb13h" path="res://Scripts/button_plate.gd" id="1_u3ddo"]
 [ext_resource type="Texture2D" uid="uid://d0fh1gv1oh1lu" path="res://Assets/Sprites/World/PressurePlate.png" id="1_vu6gh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vu6gh"]
 size = Vector2(10, 3)
+
+[sub_resource type="Gradient" id="Gradient_gbtd2"]
+offsets = PackedFloat32Array(0, 0.7844523)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u3ddo"]
+gradient = SubResource("Gradient_gbtd2")
+width = 15
+height = 15
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Button" type="Area2D"]
 collision_mask = 2
@@ -15,6 +26,10 @@ shape = SubResource("RectangleShape2D_vu6gh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vu6gh")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+color = Color(0.63529414, 0.050980393, 0.050980393, 1)
+texture = SubResource("GradientTexture2D_u3ddo")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

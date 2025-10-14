@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdalu6hww08j8"
-path="res://.godot/imported/MountainLights.png-12d29256cb75e07187b72afefd86df2f.ctex"
+uid="uid://bjlqh1cqllk4s"
+path="res://.godot/imported/MountainMid.png-8691bf8c183294e02f5e2ccea883fa97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/World/MountainLights.png"
-dest_files=["res://.godot/imported/MountainLights.png-12d29256cb75e07187b72afefd86df2f.ctex"]
+source_file="res://Assets/Sprites/World/Mountains/MountainMid.png"
+dest_files=["res://.godot/imported/MountainMid.png-8691bf8c183294e02f5e2ccea883fa97.ctex"]
 
 [params]
 

@@ -1,9 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7rnbdimng67g"]
+[gd_scene load_steps=5 format=3 uid="uid://b7rnbdimng67g"]
 
 [ext_resource type="Texture2D" uid="uid://bwd8g7siflg8p" path="res://Assets/Sprites/World/platforms.png" id="1_7lxka"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lxka"]
 size = Vector2(28, 9)
+
+[sub_resource type="Gradient" id="Gradient_7lxka"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7lxka"]
+gradient = SubResource("Gradient_7lxka")
+width = 30
+height = 7
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
 
 [node name="Platform" type="AnimatableBody2D"]
 
@@ -14,3 +24,7 @@ region_rect = Rect2(16, 16, 32, 9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7lxka")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.7764706, 0.043137256, 1)
+texture = SubResource("GradientTexture2D_7lxka")

@@ -1,4 +1,4 @@
-extends Node2D
+class_name ButtonMovingPlatform extends Node2D
 
 @onready var moving_platform: AnimatableBody2D = $"."
 @onready var button_right: Area2D = $ButtonRight
@@ -28,13 +28,11 @@ func _physics_process(delta: float) -> void:
 	check_platform_movement(is_movement_key_pressed)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("ENTERED")
 	if body.is_in_group("player"):
 		player = body
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	print("EXITED")
 	if body.is_in_group("player"):
 		player = null
 
@@ -55,23 +53,24 @@ func check_platform_movement(is_movement_key_pressed: bool) -> void:
 		else:
 			platform_movement_direction = PLATFORM_DIRECTION.NONE
 	
-	move_platform()
+	move_platform(animation_player, platform_movement_direction)
 
 
-func move_platform() -> void:
+func move_platform(animation_player_platform: AnimationPlayer, platform_movement_dir: PLATFORM_DIRECTION) -> void:
 	var move_and_update_platform: bool = false
 
-	match platform_movement_direction:
+	match platform_movement_dir:
 		PLATFORM_DIRECTION.RIGHT:
-			animation_player.speed_scale = 1
+			animation_player_platform.speed_scale = 1
 			move_and_update_platform = true
 		PLATFORM_DIRECTION.LEFT:
-			animation_player.speed_scale = -1
+			animation_player_platform.speed_scale = -1
 			move_and_update_platform = true
 		PLATFORM_DIRECTION.NONE:
-			animation_player.pause()
+			animation_player_platform.pause()
 			move_and_update_platform = false
 	
 	if move_and_update_platform:
-		animation_player.play()
-		player.use_heat(HEAT_FOR_MOVEMENT)
+		animation_player_platform.play()
+		if player:
+			player.use_heat(HEAT_FOR_MOVEMENT)
