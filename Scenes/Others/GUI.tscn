@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgkaegdsar3dv"]
+
+[ext_resource type="Texture2D" uid="uid://dlqoy286b5mhk" path="res://Assets/Sprites/Player/HeatBar/HeatBarBackgroundGrey.png" id="1_2ybgq"]
+[ext_resource type="Texture2D" uid="uid://cqq28i4omcjvs" path="res://Assets/Sprites/Player/HeatBar/HeatLogoPixel.png" id="2_2ybgq"]
+[ext_resource type="Texture2D" uid="uid://duecivsfrxlr4" path="res://Assets/Sprites/Player/HeatBar/HealthBarUpdated.png" id="3_mm7rn"]
+[ext_resource type="Script" uid="uid://ddlf17exbc60" path="res://Scripts/GUI/heat_meter.gd" id="4_scywp"]
+
+[node name="GUI" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HeatMeter" type="Node" parent="CanvasLayer"]
+
+[node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer/HeatMeter"]
+visible = false
+z_index = 100
+offset_left = 26.0
+offset_top = 26.0
+offset_right = 426.0
+offset_bottom = 426.0
+scale = Vector2(0.33, 0.33)
+value = 40.0
+fill_mode = 5
+texture_under = ExtResource("1_2ybgq")
+texture_over = ExtResource("2_2ybgq")
+texture_progress = ExtResource("3_mm7rn")
+tint_under = Color(1, 0.94467914, 0.8013193, 1)
+script = ExtResource("4_scywp")

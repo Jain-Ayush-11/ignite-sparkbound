@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7rnbdimng67g"]
+[gd_scene load_steps=6 format=3 uid="uid://b7rnbdimng67g"]
 
 [ext_resource type="Texture2D" uid="uid://bwd8g7siflg8p" path="res://Assets/Sprites/World/platforms.png" id="1_7lxka"]
+[ext_resource type="Script" uid="uid://djqsjhbbo74df" path="res://Scripts/platform.gd" id="1_bsbj5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lxka"]
 size = Vector2(28, 9)
@@ -16,6 +17,8 @@ fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
 
 [node name="Platform" type="AnimatableBody2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_bsbj5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7lxka")

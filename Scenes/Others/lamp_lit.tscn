@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckph60xwa5tof"]
+
+[ext_resource type="Texture2D" uid="uid://btad1js10x1ly" path="res://Assets/Sprites/World/lamp-lit.png" id="1_weftd"]
+
+[sub_resource type="Gradient" id="Gradient_e388f"]
+offsets = PackedFloat32Array(0, 0.6925795)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m6arw"]
+gradient = SubResource("Gradient_e388f")
+width = 150
+height = 150
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Lamp" type="Sprite2D"]
+texture = ExtResource("1_weftd")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.7648398, 0.5867307, 0.19773439, 1)
+energy = 1.5
+texture = SubResource("GradientTexture2D_m6arw")
+offset = Vector2(0, 25)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvasw60fuqvay"]
+[gd_scene load_steps=10 format=3 uid="uid://dvasw60fuqvay"]
 
 [ext_resource type="Texture2D" uid="uid://bwd2nepvfu867" path="res://Assets/Sprites/World/Bonvicio_Bonfire_1-0/Bonfire_1.png" id="1_aq45g"]
 [ext_resource type="Texture2D" uid="uid://dbdp1i4rikxit" path="res://Assets/Sprites/World/Bonvicio_Bonfire_1-0/Bonfire_2.png" id="2_y6164"]
 [ext_resource type="Texture2D" uid="uid://d3s1ei0iqagkf" path="res://Assets/Sprites/World/Bonvicio_Bonfire_1-0/Bonfire_3.png" id="3_lrmqn"]
 [ext_resource type="Texture2D" uid="uid://csgaqh7p3y6lw" path="res://Assets/Sprites/World/Bonvicio_Bonfire_1-0/Bonfire_4.png" id="4_ad5ji"]
+[ext_resource type="Script" uid="uid://2jwk2y12w3ty" path="res://Scripts/bon_fire.gd" id="5_y6164"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ddhw"]
 animations = [{
@@ -25,8 +26,42 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_jv26f"]
+offsets = PackedFloat32Array(0, 0.73144877, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0.030837, 0.030837, 0.030837, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aq45g"]
+gradient = SubResource("Gradient_jv26f")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6164"]
+size = Vector2(90.66667, 50)
+
 [node name="BonFire" type="AnimatedSprite2D"]
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_8ddhw")
 animation = &"lit-default"
 autoplay = "lit-default"
 frame_progress = 0.68511593
+script = ExtResource("5_y6164")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 12)
+color = Color(1, 0.68235296, 0.12156863, 1)
+shadow_enabled = true
+shadow_filter_smooth = 7.5
+texture = SubResource("GradientTexture2D_aq45g")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.08
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -3.3333335)
+shape = SubResource("RectangleShape2D_y6164")

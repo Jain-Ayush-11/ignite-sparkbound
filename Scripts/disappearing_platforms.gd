@@ -25,10 +25,7 @@ func _process(delta: float) -> void:
 func update_air_platforms(visible: bool) -> void:
 	air_platforms.visible = visible
 	var platforms = air_platforms.get_children()
-	for platform in platforms:
-		if platform is not AnimatableBody2D:
+	for platform: Platform in platforms:
+		if platform is not Platform:
 			continue
-		platform.visible = visible
-		var collider: CollisionShape2D = platform.get_node_or_null("CollisionShape2D")
-		if collider:
-			collider.disabled = !visible
+		platform.update_visibility(visible)

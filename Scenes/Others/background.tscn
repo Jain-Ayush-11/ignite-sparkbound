@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://4ohgmxdtob0g"]
+
+[ext_resource type="Texture2D" uid="uid://62ft54n5p7xv" path="res://Assets/Sprites/World/Mountains/background.png" id="1_1mbhb"]
+[ext_resource type="Texture2D" uid="uid://jfcvpn4dtm36" path="res://Assets/Sprites/World/Mountains/Mountain.png" id="2_xwwy0"]
+[ext_resource type="Texture2D" uid="uid://bjlqh1cqllk4s" path="res://Assets/Sprites/World/Mountains/MountainMid.png" id="3_2hrjd"]
+[ext_resource type="Shader" uid="uid://b4e0321e8qb3o" path="res://Shaders/level_1.gdshader" id="4_a62qs"]
+[ext_resource type="Texture2D" uid="uid://d07fyh7to26pt" path="res://Assets/Sprites/World/Mountains/MountainLights.png" id="5_wadoy"]
+[ext_resource type="Texture2D" uid="uid://j42hva0wtky6" path="res://Assets/Sprites/World/Mountains/MountainFront.png" id="6_4156p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x8o7k"]
+shader = ExtResource("4_a62qs")
+shader_parameter/glow_color = Vector4(1, 0.9, 0.6, 1)
+shader_parameter/glow_strength = 1.5
+
+[node name="Background" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Space" type="Parallax2D" parent="."]
+z_index = -10
+scroll_scale = Vector2(0.3, 1)
+scroll_offset = Vector2(84, 0)
+repeat_size = Vector2(1920, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Space"]
+position = Vector2(0, -194)
+texture = ExtResource("1_1mbhb")
+
+[node name="MountainsBack" type="Parallax2D" parent="."]
+z_index = -9
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(713.3, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="MountainsBack"]
+position = Vector2(347, 72)
+scale = Vector2(0.7, 0.9)
+texture = ExtResource("2_xwwy0")
+
+[node name="MountainsMid" type="Parallax2D" parent="."]
+z_index = -8
+scroll_scale = Vector2(0.7, 1)
+repeat_size = Vector2(713, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="MountainsMid"]
+position = Vector2(342, 72)
+texture = ExtResource("3_2hrjd")
+
+[node name="MountainLightsDecoration" type="Parallax2D" parent="."]
+z_index = -8
+scroll_scale = Vector2(0.7, 1)
+repeat_size = Vector2(713, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="MountainLightsDecoration"]
+material = SubResource("ShaderMaterial_x8o7k")
+position = Vector2(314, 145)
+scale = Vector2(0.7, 0.9)
+texture = ExtResource("5_wadoy")
+
+[node name="MountainFront" type="Parallax2D" parent="."]
+z_index = -5
+scroll_scale = Vector2(0.9, 1)
+scroll_offset = Vector2(333, 74)
+repeat_size = Vector2(648, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="MountainFront"]
+position = Vector2(618, 103)
+texture = ExtResource("6_4156p")

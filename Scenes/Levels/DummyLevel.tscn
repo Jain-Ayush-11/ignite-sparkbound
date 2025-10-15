@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://dple5fho28nh1"]
+[gd_scene load_steps=19 format=4 uid="uid://dple5fho28nh1"]
 
 [ext_resource type="Texture2D" uid="uid://dd1qnqlnx08ih" path="res://Assets/Sprites/World/world_tileset.png" id="1_v05q2"]
 [ext_resource type="Script" uid="uid://tou2ph3w3tkf" path="res://Scripts/disappearing_platforms.gd" id="2_o152o"]
@@ -8,18 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://nwo3d1sfr08v" path="res://Scenes/Others/ice_lake.tscn" id="6_ol077"]
 [ext_resource type="Script" uid="uid://d378la7mkiyqg" path="res://Scripts/moving_platform.gd" id="7_enqn2"]
 [ext_resource type="PackedScene" uid="uid://bkhxwjn1gh33y" path="res://Scenes/Others/heat_move_platform.tscn" id="8_frao8"]
-[ext_resource type="PackedScene" uid="uid://bpgtppi2ye71g" path="res://Scenes/Others/lamp.tscn" id="9_xvpmo"]
-[ext_resource type="Texture2D" uid="uid://62ft54n5p7xv" path="res://Assets/Sprites/World/Mountains/background.png" id="10_4j6o4"]
-[ext_resource type="Texture2D" uid="uid://jfcvpn4dtm36" path="res://Assets/Sprites/World/Mountains/Mountain.png" id="11_6mcdh"]
-[ext_resource type="Texture2D" uid="uid://bjlqh1cqllk4s" path="res://Assets/Sprites/World/Mountains/MountainMid.png" id="12_66on3"]
-[ext_resource type="Shader" uid="uid://b4e0321e8qb3o" path="res://Shaders/level_1.gdshader" id="13_lwtfp"]
-[ext_resource type="Texture2D" uid="uid://d07fyh7to26pt" path="res://Assets/Sprites/World/Mountains/MountainLights.png" id="14_6hvpd"]
-[ext_resource type="Texture2D" uid="uid://j42hva0wtky6" path="res://Assets/Sprites/World/Mountains/MountainFront.png" id="15_fp8i1"]
+[ext_resource type="PackedScene" uid="uid://bpgtppi2ye71g" path="res://Scenes/Others/trigger_lamp.tscn" id="9_xvpmo"]
+[ext_resource type="PackedScene" uid="uid://4ohgmxdtob0g" path="res://Scenes/Others/background.tscn" id="12_n4l8g"]
 [ext_resource type="PackedScene" uid="uid://mak727yxj3r4" path="res://Scenes/Others/player.tscn" id="16_8kw3c"]
-[ext_resource type="Texture2D" uid="uid://dlqoy286b5mhk" path="res://Assets/Sprites/Player/HeatBar/HeatBarBackgroundGrey.png" id="17_3wd4f"]
-[ext_resource type="Texture2D" uid="uid://c3if5o0207fpu" path="res://Assets/Sprites/Player/HeatBar/HeatLogo.png" id="18_de1c7"]
-[ext_resource type="Texture2D" uid="uid://duecivsfrxlr4" path="res://Assets/Sprites/Player/HeatBar/HealthBarUpdated.png" id="19_uet6b"]
-[ext_resource type="Script" uid="uid://ddlf17exbc60" path="res://Scripts/GUI/heat_meter.gd" id="20_iwnsv"]
+[ext_resource type="PackedScene" uid="uid://cgkaegdsar3dv" path="res://Scenes/Others/GUI.tscn" id="17_k8bk3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlcug"]
 texture = ExtResource("1_v05q2")
@@ -297,39 +289,6 @@ physics_layer_0/collision_layer = 32769
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_cyadu")
 
-[sub_resource type="Gradient" id="Gradient_jv26f"]
-offsets = PackedFloat32Array(0, 0.73144877, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0.030837, 0.030837, 0.030837, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rb0md"]
-gradient = SubResource("Gradient_jv26f")
-width = 100
-height = 100
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="Gradient" id="Gradient_u5ghp"]
-offsets = PackedFloat32Array(0.2720848, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_hwvp3"]
-gradient = SubResource("Gradient_u5ghp")
-width = 159
-height = 110
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 1)
-
-[sub_resource type="Gradient" id="Gradient_afv7b"]
-offsets = PackedFloat32Array(0.30035335, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7r2dd"]
-gradient = SubResource("Gradient_afv7b")
-width = 520
-height = 110
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 1)
-
 [sub_resource type="Animation" id="Animation_cyadu"]
 resource_name = "move"
 tracks/0/type = "value"
@@ -349,33 +308,6 @@ tracks/0/keys = {
 _data = {
 &"move": SubResource("Animation_cyadu")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7r2dd"]
-shader = ExtResource("13_lwtfp")
-shader_parameter/glow_color = Vector4(1, 0.9, 0.6, 1)
-shader_parameter/glow_strength = 1.5
-
-[sub_resource type="Gradient" id="Gradient_7hll7"]
-offsets = PackedFloat32Array(0, 0.43816254)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fayjm"]
-gradient = SubResource("Gradient_7hll7")
-width = 100
-height = 100
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="Gradient" id="Gradient_rb0md"]
-offsets = PackedFloat32Array(0, 0.7243816)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_u5ghp"]
-gradient = SubResource("Gradient_rb0md")
-width = 100
-height = 100
-fill = 1
-fill_from = Vector2(0.5, 0.5)
 
 [node name="DummyLevel" type="Node2D"]
 
@@ -406,56 +338,34 @@ one_shot = true
 
 [node name="Platform" parent="LevelDesign/Platforms/DisappearingPlatforms/AirPlatforms" instance=ExtResource("4_vdc1m")]
 position = Vector2(1236, -90)
-scale = Vector2(1.5, 1.5)
 
 [node name="Platform2" parent="LevelDesign/Platforms/DisappearingPlatforms/AirPlatforms" instance=ExtResource("4_vdc1m")]
 position = Vector2(1146, -90)
-scale = Vector2(1.5, 1.5)
 
 [node name="Platform3" parent="LevelDesign/Platforms/DisappearingPlatforms/AirPlatforms" instance=ExtResource("4_vdc1m")]
 position = Vector2(1056, -90)
-scale = Vector2(1.5, 1.5)
 
 [node name="Platform4" parent="LevelDesign/Platforms/DisappearingPlatforms/AirPlatforms" instance=ExtResource("4_vdc1m")]
 position = Vector2(966, -90)
-scale = Vector2(1.5, 1.5)
 
 [node name="Platform5" parent="LevelDesign/Platforms/DisappearingPlatforms/AirPlatforms" instance=ExtResource("4_vdc1m")]
 position = Vector2(876, -90)
-scale = Vector2(1.5, 1.5)
 
 [node name="Platform6" parent="LevelDesign/Platforms/DisappearingPlatforms/AirPlatforms" instance=ExtResource("4_vdc1m")]
 position = Vector2(786, -90)
-scale = Vector2(1.5, 1.5)
 
 [node name="BonFire" parent="LevelDesign" instance=ExtResource("5_jaqjf")]
 z_index = 1
 position = Vector2(616, 159)
-scale = Vector2(1.5, 1.5)
 frame_progress = 0.6039439
-
-[node name="PointLight2D" type="PointLight2D" parent="LevelDesign/BonFire"]
-position = Vector2(0, 12)
-color = Color(1, 0.68235296, 0.12156863, 1)
-texture = SubResource("GradientTexture2D_rb0md")
 
 [node name="IceLake" parent="LevelDesign" instance=ExtResource("6_ol077")]
 position = Vector2(448, 224)
 scale = Vector2(0.8, 0.8)
 
-[node name="PointLight2D" type="PointLight2D" parent="LevelDesign/IceLake"]
-position = Vector2(0, 22.499998)
-color = Color(0.70622146, 0.8910367, 0.9999997, 1)
-texture = SubResource("GradientTexture2D_hwvp3")
-
 [node name="IceLakePlatform" type="Node2D" parent="LevelDesign"]
 position = Vector2(1152, 257)
 scale = Vector2(0.8, 0.8)
-
-[node name="PointLight2D" type="PointLight2D" parent="LevelDesign/IceLakePlatform"]
-position = Vector2(39.999996, 23.749998)
-color = Color(0.70622146, 0.8910367, 0.9999997, 1)
-texture = SubResource("GradientTexture2D_7r2dd")
 
 [node name="MovingPlatform" type="Node" parent="LevelDesign/IceLakePlatform"]
 script = ExtResource("7_enqn2")
@@ -509,70 +419,10 @@ scale = Vector2(1.5, 1.5)
 position = Vector2(1318, 138)
 scale = Vector2(1.5, 1.5)
 
-[node name="Background" type="Node2D" parent="LevelDesign"]
-z_index = -50
-position = Vector2(0, 20.999998)
-scale = Vector2(0.8, 0.8)
-
-[node name="Space" type="Parallax2D" parent="LevelDesign/Background"]
-z_index = -10
-scroll_scale = Vector2(0.3, 1)
-scroll_offset = Vector2(84, 0)
-repeat_size = Vector2(1152, 0)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="LevelDesign/Background/Space"]
-texture = ExtResource("10_4j6o4")
-
-[node name="MountainsBack" type="Parallax2D" parent="LevelDesign/Background"]
-z_index = -9
-scroll_scale = Vector2(0.5, 1)
-repeat_size = Vector2(713.3, 0)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="LevelDesign/Background/MountainsBack"]
-position = Vector2(347, 72)
-scale = Vector2(0.7, 0.9)
-texture = ExtResource("11_6mcdh")
-
-[node name="MountainsMid" type="Parallax2D" parent="LevelDesign/Background"]
-z_index = -8
-scroll_scale = Vector2(0.7, 1)
-repeat_size = Vector2(713, 0)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="LevelDesign/Background/MountainsMid"]
-position = Vector2(342, 72)
-texture = ExtResource("12_66on3")
-
-[node name="MountainLightsDecoration" type="Parallax2D" parent="LevelDesign/Background"]
-z_index = -8
-scroll_scale = Vector2(0.7, 1)
-repeat_size = Vector2(713, 0)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="LevelDesign/Background/MountainLightsDecoration"]
-material = SubResource("ShaderMaterial_7r2dd")
-position = Vector2(314, 145)
-scale = Vector2(0.7, 0.9)
-texture = ExtResource("14_6hvpd")
-
-[node name="MountainFront" type="Parallax2D" parent="LevelDesign/Background"]
-z_index = -5
-scroll_scale = Vector2(0.9, 1)
-scroll_offset = Vector2(333, 74)
-repeat_size = Vector2(648, 0)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="LevelDesign/Background/MountainFront"]
-position = Vector2(618, 103)
-texture = ExtResource("15_fp8i1")
-
 [node name="Player" parent="." instance=ExtResource("16_8kw3c")]
 unique_name_in_owner = true
 z_index = 10
 position = Vector2(93, 169)
-collision_layer = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2.5, 2.5)
@@ -581,36 +431,12 @@ limit_top = -268
 limit_right = 1741
 limit_bottom = 379
 
-[node name="PointLight2D2" type="PointLight2D" parent="Player"]
-energy = 0.5
-texture = SubResource("GradientTexture2D_fayjm")
-
-[node name="PointLight2D" type="PointLight2D" parent="Player"]
-color = Color(1, 0.4, 0.043137256, 1)
-energy = 0.8
-texture = SubResource("GradientTexture2D_u5ghp")
-
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.7
 blend_mode = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GUI" parent="." instance=ExtResource("17_k8bk3")]
 
-[node name="HeatMeter" type="Node" parent="CanvasLayer"]
-
-[node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer/HeatMeter"]
-visible = false
-z_index = 100
-offset_left = 26.0
-offset_top = 26.0
-offset_right = 426.0
-offset_bottom = 426.0
-scale = Vector2(0.35, 0.35)
-value = 40.0
-fill_mode = 5
-texture_under = ExtResource("17_3wd4f")
-texture_over = ExtResource("18_de1c7")
-texture_progress = ExtResource("19_uet6b")
-script = ExtResource("20_iwnsv")
+[node name="Background" parent="." instance=ExtResource("12_n4l8g")]
 
 [connection signal="animation_finished" from="LevelDesign/IceLakePlatform/MovingPlatform/HeatMovePlatform/AnimationPlayer" to="LevelDesign/IceLakePlatform/MovingPlatform/HeatMovePlatform" method="_on_animation_player_animation_finished"]

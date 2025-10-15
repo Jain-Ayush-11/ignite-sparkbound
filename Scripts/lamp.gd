@@ -11,7 +11,6 @@ func _ready() -> void:
 
 
 func _on_trigger_area_body_entered(body: Node2D) -> void:
-	print(body)
 	if body.is_in_group("player"):
 		light.energy = 1.5
 		play("on")

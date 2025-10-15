@@ -25,7 +25,10 @@ var shape_properties = {
 	SHAPE.TRIANGLE: triangle
 }
 
-@export var _heat: float
+const MAX_PLAYER_HEAT: float = 100.0
+const MIN_PLAYER_HEAT: float = 0.0
+
+var _heat: float = GameState.player_heat
 
 const JUMP_WALL_LAYER: int = 16
 
@@ -56,9 +59,8 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	current_shape = SHAPE.CIRCLE
+	_heat = GameState.player_heat
 
-func _process(delta: float) -> void:
-	pass
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -123,7 +125,7 @@ func wall_jump() -> void:
 		var collided_body = collision.get_collider()
 		if collided_body is TileMapLayer:
 			var collider_collision_layer: int = collided_body.tile_set.get_physics_layer_collision_layer(0)
-			var is_wall_jumpable: bool = collider_collision_layer & (1<<(JUMP_WALL_LAYER-1))
+			var is_wall_jumpable: bool = (collider_collision_layer & (1<<(JUMP_WALL_LAYER-1))) or collided_body.is_in_group("jump_wall")
 			#wall_jump_timer = collided_body.get_node("WallJumpTimer")
 			if collision.get_position().x < position.x:
 				is_collider_left = true

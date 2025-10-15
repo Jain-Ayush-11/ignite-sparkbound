@@ -37,7 +37,7 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qkqi1"]
 size = Vector2(92, 85)
 
-[node name="Lamp" type="AnimatedSprite2D"]
+[node name="TiggerLamp" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_e4o35")
 animation = &"off"
 script = ExtResource("3_a1tfy")

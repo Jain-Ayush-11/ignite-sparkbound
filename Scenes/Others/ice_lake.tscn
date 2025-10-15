@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://nwo3d1sfr08v"]
+[gd_scene load_steps=9 format=4 uid="uid://nwo3d1sfr08v"]
 
 [ext_resource type="Script" uid="uid://nwytsiq4sp1i" path="res://Scripts/ice_lake.gd" id="1_mf2ga"]
 [ext_resource type="PackedScene" uid="uid://bgueckr2oq6fe" path="res://Scenes/Others/killzone.tscn" id="1_nvfge"]
@@ -172,6 +172,17 @@ texture = ExtResource("2_mf2ga")
 [sub_resource type="TileSet" id="TileSet_jmuut"]
 sources/0 = SubResource("TileSetAtlasSource_r6fr2")
 
+[sub_resource type="Gradient" id="Gradient_u5ghp"]
+offsets = PackedFloat32Array(0.2720848, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mf2ga"]
+gradient = SubResource("Gradient_u5ghp")
+width = 160
+height = 110
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
 [node name="IceLake" type="Node2D"]
 script = ExtResource("1_mf2ga")
 
@@ -192,5 +203,10 @@ tile_set = SubResource("TileSet_jmuut")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.4
 autostart = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 23)
+color = Color(0.70622146, 0.8910367, 0.9999997, 1)
+texture = SubResource("GradientTexture2D_mf2ga")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
