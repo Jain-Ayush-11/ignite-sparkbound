@@ -240,11 +240,11 @@ libraries = {
 }
 
 [node name="BringBackButtonLeft" parent="IceLakePlatform/MovingPlatform" instance=ExtResource("7_0x4y1")]
-position = Vector2(688, 385)
+position = Vector2(688, 386)
 scale = Vector2(2, 2)
 
 [node name="BringBackButtonRight" parent="IceLakePlatform/MovingPlatform" instance=ExtResource("7_0x4y1")]
-position = Vector2(1257, 385)
+position = Vector2(1257, 386)
 scale = Vector2(2, 2)
 
 [node name="Lake" type="Node2D" parent="IceLakePlatform"]

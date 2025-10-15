@@ -4,31 +4,43 @@ class PlayerShape:
 	var weight: int
 	var speed: int
 	var jump_velocity: int
+	var can_wall_jump: bool
+	var can_transfer_heat: bool
 
-	func _init(weight: int, speed: int, jump_velocity: int) -> void:
+	func _init(
+		weight: int,
+		speed: int,
+		jump_velocity: int,
+		can_transfer_heat: bool = false,
+		can_wall_jump: bool = false
+	) -> void:
 		self.weight = weight
 		self.speed = speed
 		self.jump_velocity = jump_velocity
+		self.can_transfer_heat = can_transfer_heat
+		self.can_wall_jump = can_wall_jump
 
 enum SHAPE {CIRCLE, SQUARE, TRIANGLE}
 
 var current_shape = null
 var next_shape = null
 
-var circle = PlayerShape.new(50, 250, -350)
-var square = PlayerShape.new(100, 50, -100)
-var triangle = PlayerShape.new(5, 300, -400)
+var circle = PlayerShape.new(50, 300, -350, false, false)
+var square = PlayerShape.new(100, 50, -100, true, false)
+var triangle = PlayerShape.new(5, 100, -400, false, true)
+
+var shape_properties: Dictionary[SHAPE, PlayerShape] = {
+	SHAPE.CIRCLE: circle,
+	SHAPE.SQUARE: square,
+	SHAPE.TRIANGLE: triangle
+}
 
 var can_wall_jump: bool = false
 var is_wall_jumping: bool = false
 var wall_jump_timer_start: float
 var wall_jump_collider_direction: int
 
-var shape_properties = {
-	SHAPE.CIRCLE: circle,
-	SHAPE.SQUARE: square,
-	SHAPE.TRIANGLE: triangle
-}
+var is_movement_allowed: bool = true
 
 var _heat: float = GameState.player_heat
 const MAX_PLAYER_HEAT: float = 100.0
@@ -72,7 +84,6 @@ func _ready() -> void:
 	current_shape = GameState.player_shape
 	_heat = GameState.player_heat
 	shape_switch_timer.timeout.connect(on_shape_switch_timer_timeout)
-	print(current_shape)
 
 
 func _physics_process(delta: float) -> void:
@@ -80,10 +91,10 @@ func _physics_process(delta: float) -> void:
 
 
 func switch_player_shape(shape: SHAPE):
+	is_movement_allowed = false
 	if shape == current_shape:
 		return
 	next_shape = shape
-	print(player_animated_sprite.animation)
 	
 	if current_shape == SHAPE.CIRCLE:
 		if shape == SHAPE.SQUARE:
@@ -112,9 +123,12 @@ func on_shape_switch_timer_timeout() -> void:
 			player_animated_sprite.play("square")
 		SHAPE.TRIANGLE:
 			player_animated_sprite.play("triangle")
-
+	is_movement_allowed = true
 
 func move_player(delta: float) -> void:
+	if !is_movement_allowed:
+		return
+
 	var player_attributes: PlayerShape = shape_properties[current_shape]
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -149,7 +163,7 @@ func heat() -> float:
 func wall_jump() -> void:
 	var is_collider_left: bool = false
 
-	if is_on_wall():
+	if is_on_wall() and shape_properties[current_shape].can_wall_jump:
 		var collision = get_slide_collision(0)
 		var collided_body = collision.get_collider()
 		if collided_body is TileMapLayer:

@@ -132,5 +132,5 @@ energy = 0.8
 texture = SubResource("GradientTexture2D_f1rsi")
 
 [node name="ShapeSwitchTimer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 0.35
 one_shot = true

@@ -20,7 +20,6 @@ func _process(delta: float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func on_area_body_entered(body: Node2D) -> void:
-	print("ENTERED")
 	if body.is_in_group("player"):
 		player = body
 
