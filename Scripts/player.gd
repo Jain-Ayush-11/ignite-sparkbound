@@ -19,16 +19,20 @@ var circle = PlayerShape.new(50, 250, -350)
 var square = PlayerShape.new(100, 50, -100)
 var triangle = PlayerShape.new(5, 300, -400)
 
+var can_wall_jump: bool = false
+var is_wall_jumping: bool = false
+var wall_jump_timer_start: float
+var wall_jump_collider_direction: int
+
 var shape_properties = {
 	SHAPE.CIRCLE: circle,
 	SHAPE.SQUARE: square,
 	SHAPE.TRIANGLE: triangle
 }
 
+var _heat: float = GameState.player_heat
 const MAX_PLAYER_HEAT: float = 100.0
 const MIN_PLAYER_HEAT: float = 0.0
-
-var _heat: float = GameState.player_heat
 
 const JUMP_WALL_LAYER: int = 16
 
@@ -36,40 +40,50 @@ const WALL_JUMP_KNOCKBACK: float = 1000
 const WALL_JUMP_VELOCITY: float = -400
 const WALL_JUMP_TIME_OFFSET: float = 0.1
 
-var can_wall_jump: bool = false
-var is_wall_jumping: bool = false
-var wall_jump_timer_start: float
-var wall_jump_collider_direction: int
-#var wall_direction: float
+const CIRCLE_SQUARE_SWITCH_KEY = "Q"
+const CIRCLE_TRIANGLE_SWITCH_KEY = "E"
 
-#@onready var direction_sprite: Sprite2D = $DirectionSprite
 @onready var player_animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var shape_switch_timer: Timer = $ShapeSwitchTimer
 
 func _input(event: InputEvent) -> void:
 	var target_shape = null
 	if event.is_action_pressed("switch_shape"):
+		if !shape_switch_timer.is_stopped():
+			print("WAIT")
+			return
 		match event.as_text():
-			"Q":
-				target_shape = SHAPE.SQUARE
-			"E":
-				target_shape = SHAPE.CIRCLE
+			CIRCLE_SQUARE_SWITCH_KEY:
+				if current_shape == SHAPE.TRIANGLE:
+					print("Wrong Shape")
+				else:
+					target_shape = SHAPE.SQUARE if current_shape == SHAPE.CIRCLE else SHAPE.CIRCLE
+			CIRCLE_TRIANGLE_SWITCH_KEY:
+				if current_shape == SHAPE.SQUARE:
+					print("Wrong Shape")
+				else:
+					target_shape = SHAPE.TRIANGLE if current_shape == SHAPE.CIRCLE else SHAPE.CIRCLE
 	
 	if target_shape != null:
 		switch_player_shape(target_shape)
 
+
 func _ready() -> void:
-	current_shape = SHAPE.CIRCLE
+	current_shape = GameState.player_shape
 	_heat = GameState.player_heat
+	shape_switch_timer.timeout.connect(on_shape_switch_timer_timeout)
+	print(current_shape)
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
 	move_player(delta)
+
 
 func switch_player_shape(shape: SHAPE):
 	if shape == current_shape:
 		return
 	next_shape = shape
+	print(player_animated_sprite.animation)
 	
 	if current_shape == SHAPE.CIRCLE:
 		if shape == SHAPE.SQUARE:
@@ -79,14 +93,26 @@ func switch_player_shape(shape: SHAPE):
 	elif current_shape == SHAPE.SQUARE:
 		if shape == SHAPE.CIRCLE:
 			player_animated_sprite.play_backwards("circle_to_square")
-		elif shape == SHAPE.TRIANGLE:
-			player_animated_sprite.play_backwards("triangle_to_square")
+		#elif shape == SHAPE.TRIANGLE:
+			#player_animated_sprite.play_backwards("triangle_to_square")
 	elif current_shape == SHAPE.TRIANGLE:
 		if shape == SHAPE.CIRCLE:
 			player_animated_sprite.play_backwards("circle_to_triangle")
-		elif shape == SHAPE.SQUARE:
-			player_animated_sprite.play("triangle_to_square")
+		#elif shape == SHAPE.SQUARE:
+			#player_animated_sprite.play("triangle_to_square")
+	shape_switch_timer.start()
 	current_shape = shape
+
+
+func on_shape_switch_timer_timeout() -> void:
+	match current_shape:
+		SHAPE.CIRCLE:
+			player_animated_sprite.play("circle")
+		SHAPE.SQUARE:
+			player_animated_sprite.play("square")
+		SHAPE.TRIANGLE:
+			player_animated_sprite.play("triangle")
+
 
 func move_player(delta: float) -> void:
 	var player_attributes: PlayerShape = shape_properties[current_shape]
@@ -110,12 +136,15 @@ func move_player(delta: float) -> void:
 	move_and_slide()
 	wall_jump()
 
+
 func use_heat(used_heat: float) -> float:
 	_heat -= used_heat
 	return _heat
 
+
 func heat() -> float:
 	return _heat
+
 
 func wall_jump() -> void:
 	var is_collider_left: bool = false

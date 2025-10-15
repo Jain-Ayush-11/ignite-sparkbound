@@ -1,22 +1,36 @@
-[gd_scene load_steps=14 format=3 uid="uid://mak727yxj3r4"]
+[gd_scene load_steps=19 format=3 uid="uid://mak727yxj3r4"]
 
 [ext_resource type="Script" uid="uid://dosk4dwuf06g8" path="res://Scripts/player.gd" id="1_34lgi"]
-[ext_resource type="Texture2D" uid="uid://bba4kbjmgslud" path="res://Assets/Sprites/Player/Circle-player.png" id="1_f6uxt"]
+[ext_resource type="Texture2D" uid="uid://bba4kbjmgslud" path="res://Assets/Sprites/Player/Shapes/Circle-player.png" id="1_f6uxt"]
 [ext_resource type="Shape2D" uid="uid://4iqtd8lw2hrr" path="res://Shapes/Player/circle_shape.tres" id="2_34lgi"]
-[ext_resource type="Texture2D" uid="uid://b7m3dalo5yjr2" path="res://Assets/Sprites/Player/PlayerSquareSpriteSheet.png" id="3_beapg"]
-[ext_resource type="Texture2D" uid="uid://bxf6sqi3fgjr6" path="res://Assets/Sprites/Player/PlayerSquare.png" id="4_f1rsi"]
+[ext_resource type="Texture2D" uid="uid://di66rk230pvdc" path="res://Assets/Sprites/Player/Shapes/CircleToSquare.png" id="4_beapg"]
+[ext_resource type="Texture2D" uid="uid://dn3k32xq8ly7g" path="res://Assets/Sprites/Player/Shapes/CircleToTriangle.png" id="5_25bes"]
+[ext_resource type="Texture2D" uid="uid://ulwbj8ral66q" path="res://Assets/Sprites/Player/Shapes/Square.png" id="5_beapg"]
+[ext_resource type="Texture2D" uid="uid://bhvfxvmdf7q53" path="res://Assets/Sprites/Player/Shapes/Triangle.png" id="7_5cd7u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1rsi"]
+atlas = ExtResource("4_beapg")
+region = Rect2(0, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_25bes"]
-atlas = ExtResource("3_beapg")
-region = Rect2(0, 0, 38, 38)
+atlas = ExtResource("4_beapg")
+region = Rect2(40, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cd7u"]
-atlas = ExtResource("3_beapg")
-region = Rect2(38, 0, 38, 38)
+atlas = ExtResource("4_beapg")
+region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bwhuv"]
-atlas = ExtResource("3_beapg")
-region = Rect2(76, 0, 38, 38)
+atlas = ExtResource("5_25bes")
+region = Rect2(0, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6atc"]
+atlas = ExtResource("5_25bes")
+region = Rect2(40, 0, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v0gp"]
+atlas = ExtResource("5_25bes")
+region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_evlwd"]
 animations = [{
@@ -30,24 +44,46 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_f1rsi")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_25bes")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5cd7u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bwhuv")
 }],
 "loop": false,
 "name": &"circle_to_square",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_f1rsi")
+"texture": SubResource("AtlasTexture_bwhuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6atc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1v0gp")
+}],
+"loop": false,
+"name": &"circle_to_triangle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_beapg")
 }],
 "loop": false,
 "name": &"square",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_5cd7u")
+}],
+"loop": true,
+"name": &"triangle",
 "speed": 5.0
 }]
 
@@ -83,7 +119,8 @@ shape = ExtResource("2_34lgi")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.55, 0.55)
 sprite_frames = SubResource("SpriteFrames_evlwd")
-animation = &"circle"
+animation = &"circle_to_triangle"
+autoplay = "circle"
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 energy = 0.5
@@ -93,3 +130,7 @@ texture = SubResource("GradientTexture2D_beapg")
 color = Color(1, 0.4, 0.043137256, 1)
 energy = 0.8
 texture = SubResource("GradientTexture2D_f1rsi")
+
+[node name="ShapeSwitchTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true

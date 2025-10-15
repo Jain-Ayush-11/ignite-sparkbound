@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxf6sqi3fgjr6"
-path="res://.godot/imported/PlayerSquare.png-7923b36a816e911d9fc49619004c6610.ctex"
+uid="uid://bhvfxvmdf7q53"
+path="res://.godot/imported/Triangle.png-c4eb239626b863c982cb243d5d4e39f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Player/PlayerSquare.png"
-dest_files=["res://.godot/imported/PlayerSquare.png-7923b36a816e911d9fc49619004c6610.ctex"]
+source_file="res://Assets/Sprites/Player/Shapes/Triangle.png"
+dest_files=["res://.godot/imported/Triangle.png-c4eb239626b863c982cb243d5d4e39f9.ctex"]
 
 [params]
 

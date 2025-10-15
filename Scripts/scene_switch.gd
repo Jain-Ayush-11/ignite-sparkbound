@@ -9,4 +9,5 @@ func _ready() -> void:
 func on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		GameState.player_heat = player.heat()
+		GameState.player_shape = player.current_shape
 		GameState.load_next_scene()

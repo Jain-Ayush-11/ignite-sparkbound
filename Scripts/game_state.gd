@@ -8,6 +8,7 @@ var scene_array = [
 
 var current_scene_index: int = 0
 var player_heat = 50
+var player_shape = Player.SHAPE.CIRCLE
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
