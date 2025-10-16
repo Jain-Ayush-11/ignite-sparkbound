@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlqoy286b5mhk"
-path="res://.godot/imported/HeatBarBackgroundGrey.png-7056faaddd8abc35c6786c3a5d71ef5a.ctex"
+uid="uid://c3if5o0207fpu"
+path="res://.godot/imported/HeatLogo.png-e2a836ed2a6c02cdf05695545f7ff115.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Player/HeatBar/HeatBarBackgroundGrey.png"
-dest_files=["res://.godot/imported/HeatBarBackgroundGrey.png-7056faaddd8abc35c6786c3a5d71ef5a.ctex"]
+source_file="res://Assets/Sprites/Player/GUI/HeatBar/HeatLogo.png"
+dest_files=["res://.godot/imported/HeatLogo.png-e2a836ed2a6c02cdf05695545f7ff115.ctex"]
 
 [params]
 

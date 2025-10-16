@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqq28i4omcjvs"
-path="res://.godot/imported/HeatLogoPixel.png-60c32afb09e6dca6209a5591abcd1fed.ctex"
+uid="uid://bani4o62xotiq"
+path="res://.godot/imported/SquareWheel.png-0c198bce4bcb0fdb7d87c438148c3f9d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Player/HeatBar/HeatLogoPixel.png"
-dest_files=["res://.godot/imported/HeatLogoPixel.png-60c32afb09e6dca6209a5591abcd1fed.ctex"]
+source_file="res://Assets/Sprites/Player/GUI/ShapeSwitch/SquareWheel.png"
+dest_files=["res://.godot/imported/SquareWheel.png-0c198bce4bcb0fdb7d87c438148c3f9d.ctex"]
 
 [params]
 

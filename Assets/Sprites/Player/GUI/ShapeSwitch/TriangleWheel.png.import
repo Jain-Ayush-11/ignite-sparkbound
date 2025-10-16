@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duecivsfrxlr4"
-path="res://.godot/imported/HealthBarUpdated.png-6ba44852fe20f3e86bf3d29a8648469c.ctex"
+uid="uid://dn3reui0qepam"
+path="res://.godot/imported/TriangleWheel.png-ccec01a4596df73657b25e8ce0c80689.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Player/HeatBar/HealthBarUpdated.png"
-dest_files=["res://.godot/imported/HealthBarUpdated.png-6ba44852fe20f3e86bf3d29a8648469c.ctex"]
+source_file="res://Assets/Sprites/Player/GUI/ShapeSwitch/TriangleWheel.png"
+dest_files=["res://.godot/imported/TriangleWheel.png-ccec01a4596df73657b25e8ce0c80689.ctex"]
 
 [params]
 

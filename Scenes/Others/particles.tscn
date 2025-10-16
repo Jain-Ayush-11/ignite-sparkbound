@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cf5rdv8d6ayvn"]
+
+[ext_resource type="Texture2D" uid="uid://bv2ogcfoe21ua" path="res://Assets/Sprites/World/Particles.png" id="1_pryii"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w05y4"]
+atlas = ExtResource("1_pryii")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7tot"]
+atlas = ExtResource("1_pryii")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbcjs"]
+atlas = ExtResource("1_pryii")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkhnf"]
+atlas = ExtResource("1_pryii")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1ywy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w05y4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7tot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbcjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkhnf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Particles" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_t1ywy")
+autoplay = "default"
+frame = 2
+frame_progress = 0.0522463

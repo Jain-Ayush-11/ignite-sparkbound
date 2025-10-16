@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e4b5uhckckax"
-path="res://.godot/imported/HeatBar.png-c253195b6cd0f57f55ee9d243cc8d547.ctex"
+uid="uid://detydm7gnsf0v"
+path="res://.godot/imported/ErrorOverlay.png-2ff7e458b63b6f653f09c8d15feae3fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Player/HeatBar/HeatBar.png"
-dest_files=["res://.godot/imported/HeatBar.png-c253195b6cd0f57f55ee9d243cc8d547.ctex"]
+source_file="res://Assets/Sprites/Player/GUI/ShapeSwitch/ErrorOverlay.png"
+dest_files=["res://.godot/imported/ErrorOverlay.png-2ff7e458b63b6f653f09c8d15feae3fd.ctex"]
 
 [params]
 

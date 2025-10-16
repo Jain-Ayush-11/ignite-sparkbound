@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgkaegdsar3dv"]
+[gd_scene load_steps=10 format=3 uid="uid://cgkaegdsar3dv"]
 
-[ext_resource type="Texture2D" uid="uid://dlqoy286b5mhk" path="res://Assets/Sprites/Player/HeatBar/HeatBarBackgroundGrey.png" id="1_2ybgq"]
-[ext_resource type="Texture2D" uid="uid://cqq28i4omcjvs" path="res://Assets/Sprites/Player/HeatBar/HeatLogoPixel.png" id="2_2ybgq"]
-[ext_resource type="Texture2D" uid="uid://duecivsfrxlr4" path="res://Assets/Sprites/Player/HeatBar/HealthBarUpdated.png" id="3_mm7rn"]
+[ext_resource type="Texture2D" uid="uid://dlqoy286b5mhk" path="res://Assets/Sprites/Player/GUI/HeatBar/HeatBarBackgroundGrey.png" id="1_2ybgq"]
+[ext_resource type="Texture2D" uid="uid://cqq28i4omcjvs" path="res://Assets/Sprites/Player/GUI/HeatBar/HeatLogoPixel.png" id="2_2ybgq"]
+[ext_resource type="Texture2D" uid="uid://duecivsfrxlr4" path="res://Assets/Sprites/Player/GUI/HeatBar/HealthBarUpdated.png" id="3_mm7rn"]
 [ext_resource type="Script" uid="uid://ddlf17exbc60" path="res://Scripts/GUI/heat_meter.gd" id="4_scywp"]
+[ext_resource type="Script" uid="uid://bborfu74d0vlt" path="res://Scripts/GUI/shape_switch.gd" id="5_23x1q"]
+[ext_resource type="Texture2D" uid="uid://3a4v3riw20rj" path="res://Assets/Sprites/Player/GUI/ShapeSwitch/CircleWheel.png" id="6_23x1q"]
+[ext_resource type="Texture2D" uid="uid://bani4o62xotiq" path="res://Assets/Sprites/Player/GUI/ShapeSwitch/SquareWheel.png" id="7_fml2q"]
+[ext_resource type="Texture2D" uid="uid://dn3reui0qepam" path="res://Assets/Sprites/Player/GUI/ShapeSwitch/TriangleWheel.png" id="8_fi1w7"]
+[ext_resource type="Texture2D" uid="uid://detydm7gnsf0v" path="res://Assets/Sprites/Player/GUI/ShapeSwitch/ErrorOverlay.png" id="9_23x1q"]
 
 [node name="GUI" type="Node"]
 
@@ -26,3 +31,46 @@ texture_over = ExtResource("2_2ybgq")
 texture_progress = ExtResource("3_mm7rn")
 tint_under = Color(1, 0.94467914, 0.8013193, 1)
 script = ExtResource("4_scywp")
+
+[node name="ShapeSwitch" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 936.0
+offset_top = 434.0
+offset_right = 936.0
+offset_bottom = 434.0
+script = ExtResource("5_23x1q")
+
+[node name="Circle" type="TextureRect" parent="CanvasLayer/ShapeSwitch"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_23x1q")
+
+[node name="Square" type="TextureRect" parent="CanvasLayer/ShapeSwitch"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_fml2q")
+
+[node name="Triangle" type="TextureRect" parent="CanvasLayer/ShapeSwitch"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 400.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_fi1w7")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/ShapeSwitch"]
+wait_time = 0.25
+one_shot = true
+
+[node name="ErrorOverlay" type="TextureRect" parent="CanvasLayer/ShapeSwitch"]
+z_index = 5
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_23x1q")

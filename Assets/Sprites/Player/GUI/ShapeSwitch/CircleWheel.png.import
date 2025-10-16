@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3if5o0207fpu"
-path="res://.godot/imported/HeatLogo.png-ecb9e926355b103ba2ce0b91354fc4c1.ctex"
+uid="uid://3a4v3riw20rj"
+path="res://.godot/imported/CircleWheel.png-0a8bc846e8cf814788454c0952f5d1ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Player/HeatBar/HeatLogo.png"
-dest_files=["res://.godot/imported/HeatLogo.png-ecb9e926355b103ba2ce0b91354fc4c1.ctex"]
+source_file="res://Assets/Sprites/Player/GUI/ShapeSwitch/CircleWheel.png"
+dest_files=["res://.godot/imported/CircleWheel.png-0a8bc846e8cf814788454c0952f5d1ad.ctex"]
 
 [params]
 

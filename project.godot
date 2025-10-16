@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Ignite: Sparkbound"
-run/main_scene="uid://3yntryyy4p0d"
+run/main_scene="uid://dsc3mn32tjf1y"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

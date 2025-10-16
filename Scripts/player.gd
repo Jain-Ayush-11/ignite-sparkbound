@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+signal shape_switch_request(shape, is_input_wrong)
+
 class PlayerShape:
 	var weight: int
 	var speed: int
@@ -20,7 +22,7 @@ class PlayerShape:
 		self.can_transfer_heat = can_transfer_heat
 		self.can_wall_jump = can_wall_jump
 
-enum SHAPE {CIRCLE, SQUARE, TRIANGLE}
+enum SHAPE {CIRCLE, SQUARE, TRIANGLE, INVALID}
 
 var current_shape = null
 var next_shape = null
@@ -76,15 +78,18 @@ func _input(event: InputEvent) -> void:
 			CIRCLE_SQUARE_SWITCH_KEY:
 				if current_shape == SHAPE.TRIANGLE:
 					print("Wrong Shape")
+					shape_switch_request.emit(SHAPE.INVALID, true)
 				else:
 					target_shape = SHAPE.SQUARE if current_shape == SHAPE.CIRCLE else SHAPE.CIRCLE
 			CIRCLE_TRIANGLE_SWITCH_KEY:
 				if current_shape == SHAPE.SQUARE:
 					print("Wrong Shape")
+					shape_switch_request.emit(SHAPE.INVALID, true)
 				else:
 					target_shape = SHAPE.TRIANGLE if current_shape == SHAPE.CIRCLE else SHAPE.CIRCLE
 	
 	if target_shape != null:
+		shape_switch_request.emit(target_shape, false)
 		switch_player_shape(target_shape)
 
 
