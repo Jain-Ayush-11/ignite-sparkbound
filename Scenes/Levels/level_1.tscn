@@ -160,7 +160,6 @@ tile_set = SubResource("TileSet_3mqfk")
 unique_name_in_owner = true
 z_index = 20
 position = Vector2(136, 396)
-_heat = 50.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -35)

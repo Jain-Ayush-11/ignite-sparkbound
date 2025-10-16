@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dosk4dwuf06g8" path="res://Scripts/player.gd" id="1_34lgi"]
 [ext_resource type="Texture2D" uid="uid://bba4kbjmgslud" path="res://Assets/Sprites/Player/Shapes/Circle-player.png" id="1_f6uxt"]
-[ext_resource type="Shape2D" uid="uid://4iqtd8lw2hrr" path="res://Shapes/Player/circle_shape.tres" id="2_34lgi"]
 [ext_resource type="Texture2D" uid="uid://di66rk230pvdc" path="res://Assets/Sprites/Player/Shapes/CircleToSquare.png" id="4_beapg"]
 [ext_resource type="Texture2D" uid="uid://dn3k32xq8ly7g" path="res://Assets/Sprites/Player/Shapes/CircleToTriangle.png" id="5_25bes"]
 [ext_resource type="Texture2D" uid="uid://ulwbj8ral66q" path="res://Assets/Sprites/Player/Shapes/Square.png" id="5_beapg"]
 [ext_resource type="Texture2D" uid="uid://bhvfxvmdf7q53" path="res://Assets/Sprites/Player/Shapes/Triangle.png" id="7_5cd7u"]
+[ext_resource type="Shape2D" uid="uid://4iqtd8lw2hrr" path="res://Shapes/Player/player_circle_collision_shape.tres" id="7_25bes"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1rsi"]
 atlas = ExtResource("4_beapg")
@@ -113,14 +113,14 @@ fill_from = Vector2(0.5, 0.5)
 collision_layer = 2
 script = ExtResource("1_34lgi")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = ExtResource("2_34lgi")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.55, 0.55)
 sprite_frames = SubResource("SpriteFrames_evlwd")
-animation = &"circle_to_triangle"
+animation = &"circle"
 autoplay = "circle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("7_25bes")
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 energy = 0.5

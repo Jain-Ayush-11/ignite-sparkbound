@@ -57,6 +57,14 @@ const CIRCLE_TRIANGLE_SWITCH_KEY = "E"
 
 @onready var player_animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shape_switch_timer: Timer = $ShapeSwitchTimer
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
+const collision_shape_paths: Dictionary[SHAPE, String] = {
+	SHAPE.CIRCLE: "res://Shapes/Player/player_circle_collision_shape.tres",
+	SHAPE.SQUARE: "res://Shapes/Player/player_square_collision_shape.tres",
+	SHAPE.TRIANGLE: "res://Shapes/Player/player_triangle_collision_shape.tres"
+}
+
 
 func _input(event: InputEvent) -> void:
 	var target_shape = null
@@ -82,6 +90,7 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	current_shape = GameState.player_shape
+	collision_shape.shape = load(collision_shape_paths[current_shape])
 	_heat = GameState.player_heat
 	shape_switch_timer.timeout.connect(on_shape_switch_timer_timeout)
 
@@ -119,11 +128,16 @@ func on_shape_switch_timer_timeout() -> void:
 	match current_shape:
 		SHAPE.CIRCLE:
 			player_animated_sprite.play("circle")
+			collision_shape.position.y = 0
 		SHAPE.SQUARE:
 			player_animated_sprite.play("square")
+			collision_shape.position.y = 0
 		SHAPE.TRIANGLE:
 			player_animated_sprite.play("triangle")
+			collision_shape.position.y = 5
+	collision_shape.shape = load(collision_shape_paths[current_shape])
 	is_movement_allowed = true
+
 
 func move_player(delta: float) -> void:
 	if !is_movement_allowed:
@@ -143,8 +157,12 @@ func move_player(delta: float) -> void:
 	if direction\
 	 #and not (is_on_wall() and direction == wall_direction)\
 	:
+		player_animated_sprite.rotation = direction * 30
+		collision_shape.rotation = direction * 30
 		velocity.x = direction * player_attributes.speed
 	else:
+		player_animated_sprite.rotation = 0
+		collision_shape.rotation = 0
 		velocity.x = move_toward(velocity.x, 0, player_attributes.speed)
 
 	move_and_slide()
