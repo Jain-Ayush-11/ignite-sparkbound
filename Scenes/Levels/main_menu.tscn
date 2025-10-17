@@ -1,30 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4xru2og5m5ys"]
+[gd_scene load_steps=6 format=3 uid="uid://b4xru2og5m5ys"]
 
-[ext_resource type="Texture2D" uid="uid://62ft54n5p7xv" path="res://Assets/Sprites/World/Mountains/background.png" id="1_qqk0j"]
 [ext_resource type="Script" uid="uid://dwn74ayobgyva" path="res://Scripts/GUI/main_menu.gd" id="1_wmo1h"]
 [ext_resource type="FontFile" uid="uid://dmelps5bgk6xr" path="res://Assets/Fonts/good timing bd.otf" id="2_vytfc"]
+[ext_resource type="Texture2D" uid="uid://byp8yb56rexmk" path="res://Assets/Sprites/Player/GUI/Cover.png" id="2_wmo1h"]
 [ext_resource type="Texture2D" uid="uid://bba4kbjmgslud" path="res://Assets/Sprites/Player/Shapes/Circle-player.png" id="3_xg7my"]
 [ext_resource type="Texture2D" uid="uid://bhvfxvmdf7q53" path="res://Assets/Sprites/Player/Shapes/Triangle.png" id="4_wmo1h"]
-[ext_resource type="Texture2D" uid="uid://jfcvpn4dtm36" path="res://Assets/Sprites/World/Mountains/Mountain.png" id="6_gnv55"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1153.0
-offset_bottom = 645.0
+offset_right = 1922.0
+offset_bottom = 1088.0
 script = ExtResource("1_wmo1h")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("1_qqk0j")
-
-[node name="TextureRect2" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1270.0
-offset_bottom = 714.375
-texture = ExtResource("6_gnv55")
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_wmo1h")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -58,6 +52,7 @@ theme_override_fonts/font = ExtResource("2_vytfc")
 text = "QUIT"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 470.25
 offset_top = 154.0
@@ -70,6 +65,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 364.5
 offset_top = 168.0
