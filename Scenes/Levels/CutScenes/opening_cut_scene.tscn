@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://4xeaejbt1yc1"]
+
+[ext_resource type="Texture2D" uid="uid://62ft54n5p7xv" path="res://Assets/Sprites/World/Mountains/background.png" id="1_dq6f2"]
+[ext_resource type="FontFile" uid="uid://dmelps5bgk6xr" path="res://Assets/Fonts/good timing bd.otf" id="2_57egx"]
+[ext_resource type="Script" uid="uid://d1t48ntdnuqv1" path="res://Scripts/CutScenes/opening_narration.gd" id="3_p4gk4"]
+
+[node name="OpeningCutScene" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(616, 377)
+texture = ExtResource("1_dq6f2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="OpeningNarration" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 150.75
+offset_top = 172.0
+offset_right = 717.75
+offset_bottom = 360.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/normal_font = ExtResource("2_57egx")
+text = "In a world where warmth once breathed life… only silence remains.
+The frost took everything — motion, form, memory.
+But deep beneath the ice, a spark endures.
+You are that spark… a fragment of what once was.
+Shape yourself. Move. Endure. Ignite the world anew."
+fit_content = true
+scroll_following = true
+horizontal_alignment = 1
+script = ExtResource("3_p4gk4")
+reveal_speed = 0.075
+reveal_by_line = true

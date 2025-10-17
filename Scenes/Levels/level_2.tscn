@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dwwvjdjkd5q22"]
+[gd_scene load_steps=18 format=4 uid="uid://dwwvjdjkd5q22"]
 
 [ext_resource type="Texture2D" uid="uid://dd1qnqlnx08ih" path="res://Assets/Sprites/World/world_tileset.png" id="1_blpqv"]
 [ext_resource type="PackedScene" uid="uid://cusyaevj66xix" path="res://Scenes/Levels/scene_switch.tscn" id="1_w2ac1"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://boibfcp6guytv" path="res://Scenes/Others/button_plate.tscn" id="7_0x4y1"]
 [ext_resource type="PackedScene" uid="uid://nwo3d1sfr08v" path="res://Scenes/Others/ice_lake.tscn" id="8_uqiic"]
 [ext_resource type="PackedScene" uid="uid://bpgtppi2ye71g" path="res://Scenes/Others/trigger_lamp.tscn" id="9_eopvx"]
+[ext_resource type="Script" uid="uid://br5v0rmwpb8c3" path="res://Scripts/GUI/HelpLable.gd" id="11_u40f0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t27xo"]
 texture = ExtResource("1_blpqv")
@@ -188,6 +189,9 @@ _data = {
 &"move": SubResource("Animation_blpqv")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0x4y1"]
+size = Vector2(173, 142)
+
 [node name="Level2" type="Node2D"]
 
 [node name="Platforms" type="Node2D" parent="."]
@@ -262,7 +266,7 @@ position = Vector2(-139.99998, 218.75)
 position = Vector2(19.999998, 218.75)
 
 [node name="Lamps" type="Node2D" parent="IceLakePlatform"]
-position = Vector2(-319.99997, 83.74999)
+position = Vector2(-304.99997, 83.74999)
 
 [node name="Lamp" parent="IceLakePlatform/Lamps" instance=ExtResource("9_eopvx")]
 position = Vector2(-75, 0)
@@ -280,10 +284,69 @@ scale = Vector2(1.5, 1.5)
 position = Vector2(323.74997, 0)
 scale = Vector2(1.5, 1.5)
 
-[node name="DirectionalLight2D2" type="DirectionalLight2D" parent="."]
-visible = false
-energy = 0.5
-blend_mode = 1
-
 [node name="SceneSwitch" parent="." instance=ExtResource("1_w2ac1")]
 position = Vector2(1676, 359)
+
+[node name="HeatMechanism" type="Area2D" parent="."]
+position = Vector2(623, 383)
+collision_mask = 3
+script = ExtResource("11_u40f0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HeatMechanism"]
+offset_left = -16.0
+offset_top = -102.0
+offset_right = 194.0
+offset_bottom = -36.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "[ S ]
+TRANSFER HEAT
+"
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HeatMechanism"]
+offset_left = 15.999996
+offset_top = -58.0
+offset_right = 226.0
+offset_bottom = 8.0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "Press the Button
+Ignite the Mechnism"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeatMechanism"]
+position = Vector2(80.5, -42)
+shape = SubResource("RectangleShape2D_0x4y1")
+
+[node name="Shape Change" type="Area2D" parent="."]
+position = Vector2(357, 383)
+collision_mask = 3
+script = ExtResource("11_u40f0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Shape Change"]
+offset_left = -16.0
+offset_top = -88.0
+offset_right = 194.0
+offset_bottom = -22.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "[ Q ]
+"
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Shape Change"]
+offset_left = 15.999996
+offset_top = -60.0
+offset_right = 226.0
+offset_bottom = 6.0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "Change to Cube and Back"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape Change"]
+position = Vector2(80.5, -42)
+shape = SubResource("RectangleShape2D_0x4y1")

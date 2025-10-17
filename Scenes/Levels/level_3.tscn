@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dsc3mn32tjf1y"]
+[gd_scene load_steps=17 format=4 uid="uid://dsc3mn32tjf1y"]
 
 [ext_resource type="PackedScene" uid="uid://cgkaegdsar3dv" path="res://Scenes/Others/GUI.tscn" id="1_nfly3"]
 [ext_resource type="Texture2D" uid="uid://dd1qnqlnx08ih" path="res://Assets/Sprites/World/world_tileset.png" id="1_t8c31"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cusyaevj66xix" path="res://Scenes/Levels/scene_switch.tscn" id="8_x1k1j"]
 [ext_resource type="PackedScene" uid="uid://ckph60xwa5tof" path="res://Scenes/Others/lamp_lit.tscn" id="9_4ahh4"]
 [ext_resource type="PackedScene" uid="uid://dvasw60fuqvay" path="res://Scenes/Others/bon_fire.tscn" id="10_dl55b"]
+[ext_resource type="Script" uid="uid://br5v0rmwpb8c3" path="res://Scripts/GUI/HelpLable.gd" id="11_osqx1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rc141"]
 texture = ExtResource("1_t8c31")
@@ -282,6 +283,9 @@ physics_layer_0/collision_layer = 32769
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_167vu")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sy7oa"]
+size = Vector2(239, 142)
+
 [node name="Level3" type="Node2D"]
 
 [node name="Platforms" type="Node" parent="."]
@@ -305,7 +309,7 @@ position = Vector2(1344, 368)
 [node name="Player" parent="." instance=ExtResource("2_t8c31")]
 unique_name_in_owner = true
 z_index = 20
-position = Vector2(136, 417)
+position = Vector2(50, 417)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -35)
@@ -393,3 +397,67 @@ scale = Vector2(1.5, 1.5)
 
 [node name="BonFire" parent="Decorations" instance=ExtResource("10_dl55b")]
 position = Vector2(1136, 129)
+
+[node name="Shape Change" type="Area2D" parent="."]
+z_index = 1000
+position = Vector2(132, 474)
+collision_mask = 3
+script = ExtResource("11_osqx1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Shape Change"]
+offset_left = -16.0
+offset_top = -88.0
+offset_right = 194.0
+offset_bottom = -22.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "[ E ]
+"
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Shape Change"]
+offset_left = 10.999996
+offset_top = -60.0
+offset_right = 239.57141
+offset_bottom = 6.0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "Change to Pyramid and Back"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shape Change"]
+position = Vector2(99.5, -42)
+shape = SubResource("RectangleShape2D_sy7oa")
+
+[node name="WallJump" type="Area2D" parent="."]
+z_index = 1000
+position = Vector2(230, 352)
+collision_mask = 3
+script = ExtResource("11_osqx1")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WallJump"]
+offset_left = -16.0
+offset_top = -88.0
+offset_right = 194.0
+offset_bottom = -22.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "████████
+Space"
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="WallJump"]
+offset_left = 10.999996
+offset_top = -40.0
+offset_right = 239.57141
+offset_bottom = 26.0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "While Touching A Wall"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallJump"]
+position = Vector2(99.5, -42)
+shape = SubResource("RectangleShape2D_sy7oa")

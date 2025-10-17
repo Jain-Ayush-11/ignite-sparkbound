@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://3yntryyy4p0d"]
+[gd_scene load_steps=12 format=4 uid="uid://3yntryyy4p0d"]
 
 [ext_resource type="PackedScene" uid="uid://mak727yxj3r4" path="res://Scenes/Others/player.tscn" id="2_3mqfk"]
 [ext_resource type="Texture2D" uid="uid://dd1qnqlnx08ih" path="res://Assets/Sprites/World/world_tileset.png" id="2_4dpyx"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://nwo3d1sfr08v" path="res://Scenes/Others/ice_lake.tscn" id="4_cyadu"]
 [ext_resource type="PackedScene" uid="uid://cgkaegdsar3dv" path="res://Scenes/Others/GUI.tscn" id="5_cyadu"]
 [ext_resource type="PackedScene" uid="uid://4ohgmxdtob0g" path="res://Scenes/Others/background.tscn" id="7_5f3p6"]
+[ext_resource type="Script" uid="uid://br5v0rmwpb8c3" path="res://Scripts/GUI/HelpLable.gd" id="8_jv26f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5f3p6"]
 texture = ExtResource("2_4dpyx")
@@ -148,6 +149,9 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
 sources/1 = SubResource("TileSetAtlasSource_5f3p6")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5f3p6"]
+size = Vector2(294, 142)
+
 [node name="Level1" type="Node2D"]
 
 [node name="Platforms" type="Node" parent="."]
@@ -182,12 +186,78 @@ position = Vector2(720, 481)
 [node name="Background" parent="." instance=ExtResource("7_5f3p6")]
 position = Vector2(0, 328)
 
+[node name="SceneSwitch" parent="." instance=ExtResource("2_xgxfi")]
+position = Vector2(1158, 412)
+
+[node name="MovementHorizontal" type="Area2D" parent="."]
+position = Vector2(134, 418)
+collision_mask = 3
+script = ExtResource("8_jv26f")
+initial_visible = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MovementHorizontal"]
+offset_left = -53.0
+offset_top = -65.0
+offset_right = 157.0
+offset_bottom = 1.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "<-          ->
+ A          D"
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="MovementHorizontal"]
+offset_left = -20.0
+offset_top = -15.0
+offset_right = 190.0
+offset_bottom = 51.0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "Move
+"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementHorizontal"]
+position = Vector2(55, -42)
+shape = SubResource("RectangleShape2D_5f3p6")
+
+[node name="Jump" type="Area2D" parent="."]
+position = Vector2(664, 418)
+collision_mask = 3
+script = ExtResource("8_jv26f")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Jump"]
+visible = false
+offset_left = -53.0
+offset_top = -65.0
+offset_right = 157.0
+offset_bottom = 1.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "████████
+Space"
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Jump"]
+visible = false
+offset_left = -20.999996
+offset_top = -18.000004
+offset_right = 189.0
+offset_bottom = 47.999996
+scale = Vector2(0.7, 0.7)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+text = "Jump"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jump"]
+position = Vector2(48, -42)
+shape = SubResource("RectangleShape2D_5f3p6")
+
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(0, 328)
 scale = Vector2(0.5, 0.5)
 color = Color(0.7524515, 0.78206176, 0.8293393, 1)
 energy = 0.8
 blend_mode = 1
-
-[node name="SceneSwitch" parent="." instance=ExtResource("2_xgxfi")]
-position = Vector2(1158, 412)
