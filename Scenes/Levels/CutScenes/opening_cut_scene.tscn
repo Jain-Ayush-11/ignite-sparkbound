@@ -30,3 +30,15 @@ horizontal_alignment = 1
 script = ExtResource("3_p4gk4")
 reveal_speed = 0.075
 reveal_by_line = true
+
+[node name="OpeningNarration2" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 124.0
+offset_top = 526.0
+offset_right = 691.0
+offset_bottom = 558.0
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/normal_font = ExtResource("2_57egx")
+text = "Press Space To Continue"
+fit_content = true
+scroll_following = true
+horizontal_alignment = 1
